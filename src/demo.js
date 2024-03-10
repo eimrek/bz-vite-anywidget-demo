@@ -11,4 +11,4 @@ createBZVisualizer("bzvis-1", jsondata1);
 
 createBZVisualizer("bzvis-2", jsondata2);
 
-render({ el: document.getElementById("widget-render-test") });
+// render({ el: document.getElementById("widget-render-test") });

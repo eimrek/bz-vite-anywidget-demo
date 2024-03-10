@@ -1,4 +1,5 @@
 import { BZVisualizer } from "./orig/BZVisualizer";
+export { BZVisualizer };
 
 import "./style.css";
 
@@ -36,4 +37,5 @@ export function createBZVisualizer(containerId, seekpathData) {
   mainBZVisualizer.loadBZ(canvasId, infoId, seekpathData);
 
   window.addEventListener("resize", mainBZVisualizer.resizeRenderer);
+  return [mainBZVisualizer, canvasId, infoId];
 }
