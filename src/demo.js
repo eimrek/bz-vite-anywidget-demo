@@ -1,6 +1,6 @@
 import "./style.css";
 
-import { createBZVisualizer } from "./bzvisualizer/create-bzvisualizer.js";
+import { createBZVisualizer } from "./bzvisualizer/main.js";
 
 import { render } from "./widget.js";
 

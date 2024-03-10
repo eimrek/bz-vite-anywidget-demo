@@ -17,7 +17,7 @@ export default defineConfig(({ mode }) => {
     build: {
       outDir: "dist",
       lib: {
-        entry: ["./src/main.js"],
+        entry: ["./src/bzvisualizer/main.js"],
         formats: ["es"],
       },
     },
