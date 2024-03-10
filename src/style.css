@@ -1,31 +1,20 @@
-.bz-canvas3d {
-  background-color: #fff;
-  width: 100%;
-  height: 100%;
-  margin: 0px;
-  padding: 0px;
-  position: relative; /* Must be relative for clipping */
-  top: 0px;
-  left: 0px;
-  overflow: hidden;
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color: #213547;
+  background-color: #ffffff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.bz-main-container {
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Chrome/Safari/Opera */
-  -khtml-user-select: none; /* Konqueror */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently
-                                    not supported by any browser */
-  background-color: #fff;
+.bzvis {
+  box-sizing: border-box;
+  padding: 20px;
   width: 100%;
-  height: 100%;
-  margin: 0px;
-  padding: 0px;
-  position: relative;
-  top: 0px;
-  left: 0%;
-  overflow: visible;
-  border: 1px solid #bbb;
+  height: 400px;
 }
