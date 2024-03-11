@@ -9,11 +9,12 @@
     "build-widget": "vite build --mode widget",
     "preview": "vite preview"
   },
-  "devDependencies": {
-    "prettier": "^3.2.5",
-    "vite": "^5.1.4"
-  },
   "dependencies": {
     "three": "~0.162.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5",
+    "vite": "^5.1.4",
+    "vite-plugin-lib-inject-css": "^2.0.0"
   }
 }

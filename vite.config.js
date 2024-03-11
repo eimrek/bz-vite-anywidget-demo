@@ -1,4 +1,5 @@
 import { defineConfig } from "vite";
+import { libInjectCss } from "vite-plugin-lib-inject-css";
 
 export default defineConfig(({ mode }) => {
   if (mode === "widget") {
@@ -14,6 +15,7 @@ export default defineConfig(({ mode }) => {
   }
 
   return {
+    plugins: [libInjectCss()],
     build: {
       outDir: "dist",
       lib: {
