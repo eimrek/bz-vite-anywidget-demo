@@ -3,7 +3,7 @@ export { BZVisualizer };
 
 import "./style.css";
 
-function generateRandomString(length) {
+export function generateRandomString(length) {
   let result = "";
   while (result.length < length) {
     result += Math.random().toString(36).substring(2);
