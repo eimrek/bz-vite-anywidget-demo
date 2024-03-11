@@ -2,7 +2,10 @@
 
 This repository contains:
 
-1. Javascript library for a BZ visualizer, built using Vite;
+1. Javascript library for a BZ visualizer:
+   - core from https://github.com/materialscloud-org/tools-seekpath;
+   - adapted to be compatible with a modern tooling library: Vite;
+   - demo page included for development;
 2. corresponding Jupyter widget, built using the `anywidget` library.
 
 ## Javascript development
