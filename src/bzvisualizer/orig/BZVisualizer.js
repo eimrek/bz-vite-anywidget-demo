@@ -66,12 +66,17 @@ var prettifyLabel = function (label, forSVG) {
 };
 
 export var BZVisualizer = function (
+  canvasElem,
+  infoElem,
   showAxes,
   showBVectors,
   showPathpoints,
   useSVGRenderer
 ) {
-  // Global variables
+  var canvasElem = canvasElem;
+  var infoElem = infoElem;
+
+  // Global variables (?)
   showAxes = typeof showAxes !== "undefined" ? showAxes : true;
   showBVectors = typeof showBVectors !== "undefined" ? showBVectors : true;
   // If you want to show the points of the explicit path
@@ -126,29 +131,18 @@ export var BZVisualizer = function (
     transparent: false,
   });
 
-  // Some parameters for taking screenshots - uncomment only for screenshots,
-  // then comment again
-  /*
-useSVGRenderer = true;
-showAxes = false;
-showBVectors = false;
-*/
-
   // need to be global in the current implementation
   var scene = null;
   var camera = null;
   var renderer = null;
-  var current_canvas_id = null;
 
   this.resizeRenderer = function () {
-    if (current_canvas_id) {
-      var canvas3d = document.getElementById(current_canvas_id);
-
+    if (canvasElem) {
       var devicePixelRatio = window.devicePixelRatio || 1;
 
       // current width (in CSS pixels)
-      var canvas3d_width = canvas3d.offsetWidth;
-      var canvas3d_height = canvas3d.offsetHeight;
+      var canvas3d_width = canvasElem.offsetWidth;
+      var canvas3d_height = canvasElem.offsetHeight;
 
       if (renderer) {
         camera.aspect = canvas3d_width / canvas3d_height;
@@ -268,17 +262,18 @@ showBVectors = false;
     return textdiv;
   };
 
-  this.loadBZ = function (canvasID, infoID, jsondata) {
+  this.loadBZ = function (jsondata) {
     if (jsondata == null) return;
     if (Object.keys(jsondata).length === 0) return;
-
-    // to be used by resizeRenderer
-    current_canvas_id = canvasID;
-    var canvas3d = document.getElementById(canvasID);
+    if (canvasElem == null) return;
+    if (canvasElem.id == "") return;
+    if (infoElem == null) return;
 
     var devicePixelRatio = window.devicePixelRatio || 1;
 
-    document.getElementById(infoID).innerHTML = "";
+    infoElem.innerHTML = "";
+
+    var canvas3d = canvasElem;
 
     // Remove the renderer (and anything else)
     while (canvas3d.firstChild) {
@@ -326,13 +321,7 @@ showBVectors = false;
     renderer.domElement.width = canvas3d_width * devicePixelRatio;
     renderer.domElement.height = canvas3d_height * devicePixelRatio;
 
-    //document.body.appendChild( renderer.domElement );
     canvas3d.appendChild(renderer.domElement);
-
-    // Now is commented, needs to be called by hand
-    // var doc = canvas3d.ownerDocument;
-    // var win = doc.defaultView || doc.parentWindow;
-    // win.addEventListener("resize", resizeRenderer);
 
     let controls = new OrbitControls(camera, renderer.domElement);
     controls.addEventListener("change", render); // add this only if there is no animation loop (requestAnimationFrame)
